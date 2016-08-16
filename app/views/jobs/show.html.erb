@@ -1,0 +1,12 @@
+<H1><%= @job.title %></H1>
+
+<p><%= @job.content %></p>
+
+<ul>
+  <li><%= @job.start_time%></li>
+  <li><%= @job.end_time%></li>
+  <li><%= @job.address%></li>
+  <li><%= @job.user.company%></li>
+</ul>
+
+<%= link_to 'back to index', jobs_path %>
