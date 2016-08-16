@@ -15,6 +15,4 @@ class User < ApplicationRecord
   validates :first_name, presence: true,  on: :update
   validates :last_name, presence: true,  on: :update
   validates :skill, presence: true, on: :update
-
-  before_validation -> { byebug }
 end
