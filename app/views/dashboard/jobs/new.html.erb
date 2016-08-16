@@ -3,15 +3,10 @@
 <%= simple_form_for @job ,:url => dashboard_jobs_path, :method => :post do |f| %>
 <%= f.input :title %>
 <%= f.input :content %>
-<%= f.input :skill, collection: Skill.all %>
+<%= f.input :skill_id, collection: Skill.all %>
 <%= f.input :start_time %>
 <%= f.input :end_time %>
-
+<%= f.input :address %>
 <%= f.button :submit, 'Post your job', class: 'btn btn-primary btn-xl' %>
 
 <% end %>
-
-
-
-
-<%= f.hidden :user_id val:'current_user.id' %>

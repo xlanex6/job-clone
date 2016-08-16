@@ -13,12 +13,12 @@ class Dashboard::JobsController < ApplicationController
   end
 
   def create
-
-    @job = current_user.Job.new(job_params)
+    @job = Job.new(job_params)
+    @job.user_id = current_user.id
     if @job.save
-      render :index
+      redirect_to jobs_path
     else
-      render 'new'
+      redirect_to jobs_path
     end
   end
 
@@ -26,7 +26,7 @@ class Dashboard::JobsController < ApplicationController
   private
 
   def job_params
-    params.require(:job).permit(:title, :content, :address, :start_time, :end_time, :user_id)
+    params.require(:job).permit(:title, :content, :address, :start_time, :end_time, :skill_id)
   end
 
 
