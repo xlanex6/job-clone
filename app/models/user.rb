@@ -6,11 +6,15 @@ class User < ApplicationRecord
 
   has_many :jobs
   has_many :applications
-  belongs_to :skill
+  belongs_to :skill, required: false
+
   validates :user_type, inclusion: { in: ["Job Seeker","Employer"],
     message: "%{value} is not a valid user type" },
-    presence: true
-  validates :first_name, presence: true
-  validates :last_name, presence: true
-  validates :skill_id, presence: true
+    presence: true,
+    on: :update
+  validates :first_name, presence: true,  on: :update
+  validates :last_name, presence: true,  on: :update
+  validates :skill, presence: true, on: :update
+
+  before_validation -> { byebug }
 end
