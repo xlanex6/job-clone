@@ -1,0 +1,13 @@
+<h1>NEw job</h1>
+
+<%= simple_form_for @job ,:url => dashboard_jobs_path, :method => :post do |f| %>
+<%= f.input :title %>
+<%= f.input :content %>
+<%= f.input :skill, collection: Skill.all %>
+<%= f.input :start_time %>
+<%= f.input :end_time %>
+<%= f.hidden :user_id val='current_user.id' %>
+
+<%= f.button :submit, 'Post your job', class: 'btn btn-primary btn-xl' %>
+
+<% end %>
