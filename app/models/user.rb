@@ -4,7 +4,8 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
-  has_many :jobs, :applications
+  has_many :jobs
+  has_many :applications
   has_one :skill
   validates :user_type, inclusion: { in: ["Job Seeker","Employer"],
     message: "%{value} is not a valid user type" },
