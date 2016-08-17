@@ -5,7 +5,6 @@
 #
 #   movies = Movie.create([( name:  Star Wars  ) ( name:  Lord of the Rings  )])
 #   Character.create(name:  Luke  movie: movies.first)
-Skill.destroy_all
 Skill.create(name:"Designer")
 Skill.create(name:"Web Designer")
 Skill.create(name:"Seo")
