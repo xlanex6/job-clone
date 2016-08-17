@@ -16,9 +16,9 @@ class Dashboard::JobsController < ApplicationController
     @job = Job.new(job_params)
     @job.user_id = current_user.id
     if @job.save
-      redirect_to jobs_path
+      redirect_to dashboard_jobs_path
     else
-      redirect_to jobs_path
+      render :new
     end
   end
 
