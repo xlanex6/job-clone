@@ -1,21 +1,28 @@
-<H1><%= @job.title %></H1>
 
-<p><%= @job.content %></p>
+<% if @job.start_time > DateTime.now-1 %>
+  <H1><%= @job.title %></H1>
 
-<ul>
-  <li><%= @job.start_time%></li>
-  <li><%= @job.end_time%></li>
-  <li><%= @job.address%></li>
-  <li><%= @job.user.company%></li>
-</ul>
+  <p><%= @job.content %></p>
 
-<%= link_to 'back to index', jobs_path %>
-<br>
-<% if @already_apply %>
-<br>
-<p>You already apply</p>
+  <ul>
+    <li><%= @job.start_time %></li>
+    <li><%= @job.end_time %></li>
+    <li><%= @job.address %></li>
+    <li><%= @job.user.company %></li>
+  </ul>
+
+
+  <%= link_to 'back to index', jobs_path %>
+  <br>
+
+
+  <% if @already_apply %>
+  <br>
+  <p>You already apply</p>
+  <% else %>
+  <%= button_to "Apply", job_applications_path(@job), class: "btn btn-primary btn-lg" %>
+  <% end %>
 <% else %>
-<%= button_to "Apply", job_applications_path(@job), class: "btn btn-primary btn-lg" %>
+  <h1>The jobs is expired... Sorry :( </h1>
 <% end %>
-
 

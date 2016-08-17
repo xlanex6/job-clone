@@ -1,10 +1,13 @@
 <% @jobs.each do |job| %>
-  <%= link_to job.title, job_path(job)%> <br>
-  <%= job.content %>
-  <ul>
-    <li><%= job.start_time%></li>
-    <li><%= job.end_time%></li>
-    <li><%= job.address%></li>
-    <li>by <%= job.user.company%></li>
-  </ul>
+<% if job.start_time > DateTime.now-1 %>
+    <%= link_to job.title, job_path(job)%> <br>
+    <%= job.content %>
+    <ul>
+      <li><%= job.start_time %></li>
+      <li><%= job.end_time %></li>
+      <li><%= job.address %></li>
+      <li>by <%= job.user.company %></li>
+    </ul>
+    <% else %>
+  <% end %>
 <% end %>
