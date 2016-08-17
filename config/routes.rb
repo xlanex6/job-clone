@@ -3,9 +3,10 @@ Rails.application.routes.draw do
     controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
   root to: 'pages#home'
 
-  resources :jobs, only: [:index, :show]
+  resources :jobs, only: [:index, :show] do
+      resources :applications, only: [:update, :create]
+    end
   resources :users, only: [:show]
-  resources :applications, only: [:update, :create]
   namespace :dashboard do
     resources :jobs, only: [:index, :show, :new, :create]
     resources :applications, only: [:index]
