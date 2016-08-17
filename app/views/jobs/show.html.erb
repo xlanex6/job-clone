@@ -11,7 +11,11 @@
 
 <%= link_to 'back to index', jobs_path %>
 <br>
+<% if @already_apply %>
+<br>
+<p>You already apply</p>
+<% else %>
 <%= button_to "Apply", job_applications_path(@job), class: "btn btn-primary btn-lg" %>
-
+<% end %>
 
 

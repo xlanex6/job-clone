@@ -19,11 +19,11 @@
   <% @applications.each do |application| %>
     <h2> <%=  application.job.title %></h2> <br>
     <ul>
-      <li><%= application.job.start_time%></li>
-      <li><%= application.job.end_time%></li>
-      <li><%= application.job.address%></li>
-      <li>by <%= application.job.user.company%></li>
-      <li><%= application.job.address%></li>
+      <li><%= application.job.start_time %></li>
+      <li><%= application.job.end_time %></li>
+      <li><%= application.job.address %></li>
+      <li>by <%= application.job.user.company %></li>
+      <li><%= application.job.address %></li>
     </ul>
   <% end %>
 <% end %>
