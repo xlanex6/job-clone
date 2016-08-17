@@ -10,6 +10,12 @@ gem 'redis'
 gem 'devise'
 gem 'omniauth-facebook'
 gem "geocoder"
+gem "gmaps4rails"
+gem "coffee-rails"
+
+source 'https://rails-assets.org' do
+  gem "rails-assets-underscore"
+end
 
 gem 'sass-rails'
 gem 'jquery-rails'

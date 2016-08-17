@@ -1,36 +1,29 @@
+<div class="container">
 
-<% if @job.start_time > DateTime.now-1 %>
-  <H1><%= @job.title %></H1>
+  <% if @job.start_time > DateTime.now-1 %>
 
-  <p><%= @job.content %></p>
+    <H1><%= @job.title %></H1>
+    <p><%= @job.content %></p>
 
-  <ul>
-    <li><%= @job.start_time %></li>
-    <li><%= @job.end_time %></li>
-    <li><%= @job.address %></li>
-    <li><%= @job.user.company %></li>
-  </ul>
+    <ul>
+      <li><%= @job.start_time %></li>
+      <li><%= @job.end_time %></li>
+      <li><%= @job.address %></li>
+      <li><%= @job.user.company %></li>
+    </ul>
+
+    <%= link_to 'back to index', jobs_path %>
+    <br>
 
 
-  <%= link_to 'back to index', jobs_path %>
-  <br>
-
-
-  <% if @already_apply %>
-  <br>
-  <p>You already apply</p>
+    <% if @already_apply %>
+    <br>
+    <p>You already apply</p>
+    <% else %>
+    <%= button_to "Apply", job_applications_path(@job), class: "btn btn-primary btn-lg" %>
+    <% end %>
   <% else %>
-  <%= button_to "Apply", job_applications_path(@job), class: "btn btn-primary btn-lg" %>
+    <h1>The jobs is expired... Sorry :( </h1>
   <% end %>
-<% else %>
-  <h1>The jobs is expired... Sorry :( </h1>
-<% end %>
 
-<% content_for(:after_js) do %>
-  <%= javascript_tag do %>
-  $(document).ready(function() {
-      var coord = <%= raw @job_geo %>;
-      alert('Flat coordinates are ' + coord.lat + ', ' + coord.lng);
-    });
-  <% end %>
-<% end %>
+</div>
