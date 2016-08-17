@@ -15,6 +15,7 @@
       </button>
     </form> -->
 
+    <%= link_to 'View all Jobs', jobs_path, class: "navbar-wagon-item navbar-wagon-link" %>
     <!-- Different navigation if login or not -->
     <% if user_signed_in? %>
 
@@ -49,7 +50,10 @@
       </div>
     <!-- Button (call-to-action) -->
     <%= link_to t(".top_call_to_action", default: "Post a Job"), new_dashboard_job_path, class: "navbar-wagon-item navbar-wagon-button btn" %>
+
     <% else %>
+    <!-- without login -->
+
 
       <!-- Login text link -->
       <%= link_to t(".sign_in", default: "Login"), new_user_session_path, class: "navbar-wagon-item navbar-wagon-link" %>
