@@ -2,7 +2,6 @@
 <h2> Profile Information </h2>
 <ul>
   <li>User_type : <%= @user.user_type %></li>
-  <li>Skill : <%= @user.skill.name %></li>
   <li>Title : <%= @user.title %></li>
   <li>Bio : <%= @user.bio %></li>
   <li>CV : <%= @user.cv %></li>
@@ -10,6 +9,5 @@
   <li>Website : <%= @user.website %></li>
 </ul>
 
-<%= link_to destroy_user_session_path, method: :delete do %>
-<p>Log out</p>
-<% end %>
+<%= link_to "Edit Profile", edit_dashboard_user_path(current_user)%>
+
