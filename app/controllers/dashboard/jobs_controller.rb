@@ -2,10 +2,7 @@ class Dashboard::JobsController < ApplicationController
 
   def index
     @jobs = current_user.jobs.all
-  end
-
-  def show
-
+    @applications = current_user.applications.all
   end
 
   def new
@@ -22,13 +19,10 @@ class Dashboard::JobsController < ApplicationController
     end
   end
 
-
-  private
+private
 
   def job_params
     params.require(:job).permit(:title, :content, :address, :start_time, :end_time, :skill_id)
   end
-
-
 
 end
