@@ -1,5 +1,5 @@
 class Skill < ApplicationRecord
   has_many :users
-  belongs_to :jobs
+  has_many :jobs
   validates :name, presence: true
 end
