@@ -12,6 +12,8 @@ gem 'omniauth-facebook'
 gem "geocoder"
 gem "gmaps4rails"
 gem "coffee-rails"
+gem "faker"
+gem "faker_extension_fr"
 
 source 'https://rails-assets.org' do
   gem "rails-assets-underscore"
