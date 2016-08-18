@@ -9,11 +9,11 @@ class Dashboard::ApplicationsController < ApplicationController
     if params[:status] == 'accepted'
       @application.accepted_date = DateTime.now
       @application.save
-      dashboard_applications_path
+      redirect_to :back
     elsif params[:status] == 'refused'
       @application.refused_date = DateTime.now
       @application.save
-      dashboard_applications_path
+      redirect_to :back
     end
   end
 
