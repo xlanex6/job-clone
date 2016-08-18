@@ -42,9 +42,9 @@ end
 
 #Jobs
 
-city_data = Faker::Address.fr_zip_and_city_in_region(10)
-
-100.times do
+500.times do
+  nbre = rand(1..93)
+  city_data = Faker::Address.fr_zip_and_city_in_region(nbre)
   skill = Skill.all.sample
   Job.create(
     content: Faker::StarWars.quote,
