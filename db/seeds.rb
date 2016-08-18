@@ -16,13 +16,13 @@ Skill.create(name:"Photo Director")
 
 20.times do
   User.create(
-    first_name: Faker::Name.first_name,
-    last_name: Faker::Name.last_name,
+    first_name: Faker::Name.fr_first_name_f,
+    last_name: Faker::Name.fr_name,
     email: Faker::Internet.email,
     password: Faker::Internet.password,
-    phone: Faker::PhoneNumber.subscriber_number(6),
+    phone: Faker::PhoneNumber.fr_cellphone_number,
     website: Faker::Internet.domain_name,
-    company: Faker::Company.name,
+    company: Faker::Company.fr_name,
     user_type: "Employer"
   )
 end
@@ -30,17 +30,19 @@ end
 50.times do
   User.create(
     first_name: Faker::Name.first_name,
-    last_name: Faker::Name.last_name,
+    last_name: Faker::Name.fr_name,
     email: Faker::Internet.email,
     password: Faker::Internet.password,
-    phone: Faker::PhoneNumber.subscriber_number(6),
+    phone: Faker::PhoneNumber.fr_cellphone_number,
     website: Faker::Internet.domain_name,
-    company: Faker::Company.name,
+    company: Faker::Company.fr_name,
     user_type: "Job Seeker"
   )
 end
+
 #Jobs
-city_data = Faker::Address.fr_zip_and_city
+
+city_data = Faker::Address.fr_zip_and_city_in_region(10)
 
 100.times do
   skill = Skill.all.sample
