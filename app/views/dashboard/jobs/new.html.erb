@@ -1,12 +1,7 @@
-
-
 <div class="container">
   <div class="row">
-    <div class="col-md-6 col-offset-md-3">
-
-
+    <div class="col-lg-6 col-lg-offset-3">
       <h1>NEw job</h1>
-
       <%= simple_form_for @job ,:url => dashboard_jobs_path, :method => :post do |f| %>
       <%= f.input :title %>
       <%= f.input :content %>
@@ -15,9 +10,7 @@
       <%= f.input :end_time %>
       <%= f.input :address %>
       <%= f.button :submit, 'Post your job', class: 'btn btn-primary btn-xl' %>
-
       <% end %>
-
     </div>
   </div>
 </div>
