@@ -1,0 +1,13 @@
+
+
+<ul>
+<% @applications.each do |application| %>
+  <h2><%= application.job.title %></h2>
+  <li><%= application.user.first_name %> <%= application.user.last_name %></li>
+  <%= link_to "Accepted", dashboard_application_path(application, status: 'accepted'), method: :patch %>
+  <p>Accepted : <%= application.accepted_date %></p>
+  <%= link_to "Refused", dashboard_application_path(application, status: 'refused'), method: :patch %>
+  <p>Refused : <%= application.refused_date %></p>
+  <hr>
+<% end %>
+</ul>

@@ -37,5 +37,13 @@ class User < ApplicationRecord
     return user
   end
 
+  def applications_own_jobs
+    jobs_application = []
+    self.jobs.each do |job|
+      jobs_application << job.applications
+    end
+    jobs_application.flatten
+  end
+
 
 end
