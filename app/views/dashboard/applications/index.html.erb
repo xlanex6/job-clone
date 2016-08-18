@@ -1,0 +1,18 @@
+
+
+<ul>
+<% @applications.each do |application| %>
+  <h2><%= application.job.title %></h2>
+  <li><%= application.user.first_name %> <%= application.user.last_name %></li>
+  <%= link_to "Accepted", dashboard_application_path(application, status: 'accepted'), method: :patch %>
+  <%= link_to "Refused", dashboard_application_path(application, status: 'refused'), method: :patch %>
+  <% if application.accepted_date == nil && application.refused_date == nil %>
+    <p>Pending validation</p>
+    <% elsif application.accepted_date != nil %>
+      <p>Application accepted on <%= application.accepted_date %></p>
+    <% else %>
+      <p>Application refused on <%= application.refused_date %></p>
+  <% end %>
+  <hr>
+<% end %>
+</ul>

@@ -13,8 +13,4 @@ class ApplicationsController < ApplicationController
       redirect_to user_session_path
     end
   end
-
-  def update
-  end
-
 end
