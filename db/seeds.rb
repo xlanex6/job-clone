@@ -1,10 +1,4 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([( name:  Star Wars  ) ( name:  Lord of the Rings  )])
-#   Character.create(name:  Luke  movie: movies.first)
+
 Skill.create(name:"Designer")
 Skill.create(name:"Web Designer")
 Skill.create(name:"Seo")
@@ -18,26 +12,47 @@ Skill.create(name:"Community Manager")
 Skill.create(name:"Video Maker")
 Skill.create(name:"Photo Director")
 
-#Job Seekers
-User.create(first_name: "Jean", last_name: "Dupont", email: "jean.dupont@gmail.com", password: "123soleil", phone: "0673829323", title: "Developer Full Stack", bio: "Developer Fullstack depuis l enfance! C est trop cool", avatar: " ", skill_id: "5", cv: " ", website: " ", company: " ", user_type: "Job Seeker")
-User.create(first_name: "John", last_name: "Smith", email: "john.smith@lewagon.fr", password: "123soleil", phone: "0839283949", title: "Photograph high lever", bio: "J adore prendre des photos. Super super super", avatar: " ", skill_id: "12", cv: " ", website:  " ", company: " ", user_type: "Job Seeker")
-User.create(first_name: "George", last_name: "Abitbol", email: "george.abitbol@yahoo.fr", password: "123soleil", phone: "0789263728", title: "Ecrivain de génie", bio: "Des chiffres et des lettres mais surtout des lettres", avatar: " ", skill_id: "9", cv: " ", website: " ", company: " ", user_type: "Job Seeker")
-
 # Employer
-User.create(first_name: "Martine", last_name: "Lamy", email: "martine@edf.com", password: "123soleil", phone: "0673829323", title:  " ", bio: "Entreprise trop cool où il fait bon travail. on glande rien!", avatar:  " ", skill_id: "3", cv:  " ", website: "www.edf.fr", company: "EDF", user_type: "Employer")
-User.create(first_name: "Catherine", last_name: "Laglande", email: "cathy.l@ratp.fr", password: "123soleil", phone: "0839283949", title:  " ", bio: "On travail pas beaucoup, on est bien payés! Venez", avatar:  " ", skill_id: "4", cv:  " ", website: "www.ratp.fr", company: "RATP", user_type: "Employer")
-User.create(first_name: "George", last_name: "Latrique", email: "george@aviva.fr", password: "123soleil", phone: "0789263728", title:  " ", bio: "Des chiffres et des lettres mais surtout des lettres", avatar:  " ", skill_id: "2", cv:  " ", website: "www.aviva.fr", company: "AVIVA", user_type: "Employer")
 
-# Jobs
-Job.create(title:"Chef du monde", content:"domine le monde", start_time:DateTime.now + 4, end_time:DateTime.now + 9, address:"27 Rue des Francs Bourgeois, Paris", skill_id: 1, user_id:4)
-Job.create(title:"Chef de la terre", content:"domine la terre", start_time:DateTime.now + 4, end_time:DateTime.now + 9, address:"58 Avenue de la Grande Armée, Paris", skill_id:2, user_id:4)
-Job.create(title:"Patron", content:"domine la sieste", start_time:DateTime.now + 4, end_time:DateTime.now + 12, address:"56 Rue Cler, Paris", skill_id:3, user_id:4)
-Job.create(title:"CTO", content:"domine les serveurs", start_time:DateTime.now + 4, end_time:DateTime.now + 9, address:"65 Rue du Rendez-Vous, Paris", skill_id:2, user_id:5)
-Job.create(title:"Nerd en chef", content:"Dodo dans la matrice", start_time:DateTime.now + 4, end_time:DateTime.now + 13, address:"9 rue Rue de Buzenval , Paris", skill_id:4, user_id:4)
-Job.create(title:"Assistant d assistant", content:"se fait dominer", start_time:DateTime.now + 4, end_time:DateTime.now + 12, address:"2 rue du Louvre , Paris", skill_id:5, user_id:5)
-Job.create(title:"Secrétaire", content:"promotion canapé", start_time:DateTime.now + 4, end_time:DateTime.now + 9, address:"57 Avenue St Ouen, Paris", skill_id:2, user_id:5)
-Job.create(title:"Stagiaire à vie", content:"pas de salaire", start_time:DateTime.now + 4, end_time:DateTime.now + 56, address:"204bis Rue de la Convention, Paris", skill_id:2, user_id:4)
-Job.create(title:"Gestionnaire de barraque à frites", content:"vente de frites toute la journée", start_time:DateTime.now + 4, end_time:DateTime.now + 9, address:"27 Rue Balard, Paris", skill_id:5, user_id:4)
-Job.create(title:"Assistant de direction assistée", content:"Poste pour fan d automobile", start_time:DateTime.now + 4, end_time:DateTime.now + 9, address:"2 Rue Joseph Liouville, Paris", skill_id:2, user_id:5)
-Job.create(title:"Chef du rien", content:"Vous ne ferez rien de la journée", start_time:DateTime.now + 4, end_time:DateTime.now + 89, address:"5 Rue des Goncourt, Paris", skill_id:3, user_id:4)
-Job.create(title:"Livreur de pizza", content:"Vous deviendrez pilote d élite", start_time:DateTime.now + 4, end_time:DateTime.now + 9, address:"22 Rue Littré ,Paris", skill_id:4, user_id:5)
+20.times do
+  User.create(
+    first_name: Faker::Name.fr_first_name_f,
+    last_name: Faker::Name.fr_name,
+    email: Faker::Internet.email,
+    password: Faker::Internet.password,
+    phone: Faker::PhoneNumber.fr_cellphone_number,
+    website: Faker::Internet.domain_name,
+    company: Faker::Company.fr_name,
+    user_type: "Employer"
+  )
+end
+#Job Seekers
+50.times do
+  User.create(
+    first_name: Faker::Name.first_name,
+    last_name: Faker::Name.fr_name,
+    email: Faker::Internet.email,
+    password: Faker::Internet.password,
+    phone: Faker::PhoneNumber.fr_cellphone_number,
+    website: Faker::Internet.domain_name,
+    company: Faker::Company.fr_name,
+    user_type: "Job Seeker"
+  )
+end
+
+#Jobs
+
+city_data = Faker::Address.fr_zip_and_city_in_region(10)
+
+100.times do
+  skill = Skill.all.sample
+  Job.create(
+    content: Faker::StarWars.quote,
+    start_time: Faker::Date.forward(5),
+    end_time: Faker::Date.forward(45) + 5,
+    address: "#{Faker::Address.fr_street_name} #{city_data[1]} #{city_data[0]}",
+    skill_id: skill.id,
+    user_id: rand(1..20),
+    title: skill.name + [" chief"," director", " junior", " senior"].sample,
+  )
+end
