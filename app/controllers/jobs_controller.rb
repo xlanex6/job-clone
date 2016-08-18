@@ -1,13 +1,16 @@
 class JobsController < ApplicationController
 
   def index
+    if params[:jobs].nil?
+      @jobs = Job.all
+    else
+      @jobs = Job.where(skill_id: params[:jobs][:skill_id]).near(params[:jobs][:address], '10')
 
-    @jobs = Job.where(skill_id: params[:jobs][:skill_id]).near(params[:jobs][:address], '10')
-
-    @hash = Gmaps4rails.build_markers(@jobs) do |job, marker|
-      marker.lat job.latitude
-      marker.lng job.longitude
-      marker.infowindow render_to_string(partial: "/jobs/map_box", locals: { job: job })
+      @hash = Gmaps4rails.build_markers(@jobs) do |job, marker|
+        marker.lat job.latitude
+        marker.lng job.longitude
+        marker.infowindow render_to_string(partial: "/jobs/map_box", locals: { job: job })
+      end
     end
   end
 
