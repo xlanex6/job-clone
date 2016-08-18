@@ -6,7 +6,7 @@
 
         <div class="container">
           <div class="form-inline input-form">
-            <%= simple_form_for :jobs, url: jobs_path,  :method => :get do |f| %>
+            <%= simple_form_for :jobs, url: jobs_path, :method => :get do |f| %>
               <%= f.input :skill_id, collection: Skill.all, prompt: "Select your skill", class: "form-control", label: false %>
               <%= f.text_field :address, placeholder: "Ex: Paris", class: "form-control" %>
               <%= f.submit 'Find a job', class: "form-control btn btn-danger" %>
