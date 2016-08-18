@@ -7,24 +7,33 @@
   <!-- Right Navigation -->
   <div class="navbar-wagon-right hidden-xs hidden-sm">
 
-    <!-- Search form -->
-<!--     <form action="" class="navbar-wagon-search">
-      <input type="text" class="navbar-wagon-search-input" placeholder="Search something">
-      <button type="submit" class="navbar-wagon-search-btn">
-        <i class="fa fa-search"></i>
-      </button>
-    </form> -->
 
+    <!-- View all jobs public access -->
     <%= link_to 'View all Jobs', jobs_path, class: "navbar-wagon-item navbar-wagon-link" %>
+
     <!-- Different navigation if login or not -->
     <% if user_signed_in? %>
 
+      <!-- Different navigation for Job Seekers & Employers -->
+      <% if current_user.user_type == "Employer" %>
 
-      <!-- Link to dashboard -->
-      <%= link_to "Dashboard", dashboard_jobs_path, class: "navbar-wagon-item navbar-wagon-link" %>
+        <div class="dropdown">
+        <%= link_to "My Dashboard", "#", class: "dropdown-toggle navbar-wagon-item navbar-wagon-link", "data-toggle" => "dropdown" %>
+        <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
+          <li>
+            <%= link_to "Posted Jobs", dashboard_jobs_path, class: "navbar-wagon-item navbar-wagon-link" %>
+          </li>
+          <li>
+            <%= link_to "Applications", dashboard_applications_path, class: "navbar-wagon-item navbar-wagon-link" %>
+          </li>
+          </ul>
+        </div>
+
+      <% else %>
+        <%= link_to 'My Applications', dashboard_jobs_path, class: "navbar-wagon-item navbar-wagon-link" %>
+      <% end %>
 
       <!-- Notification -->
-
 
       <!-- Profile picture and dropdown -->
       <div class="navbar-wagon-item">
@@ -48,8 +57,13 @@
           </ul>
         </div>
       </div>
-    <!-- Button (call-to-action) -->
-    <%= link_to t(".top_call_to_action", default: "Post a Job"), new_dashboard_job_path, class: "navbar-wagon-item navbar-wagon-button btn" %>
+    <!-- Different button (call-to-action) for Job Seeker & Employer -->
+    <% if current_user.user_type == "Employer" %>
+      <%= link_to t(".top_call_to_action", default: "Post a Job"), new_dashboard_job_path, class: "navbar-wagon-item navbar-wagon-button btn" %>
+      <% elsif current_user.user_type == "Job Seeker" %>
+      <%= link_to t(".top_call_to_action", default: "Apply to a Job"), jobs_path, class: "navbar-wagon-item navbar-wagon-button btn" %>
+    <% end %>
+
 
     <% else %>
     <!-- without login -->
