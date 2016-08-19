@@ -9,5 +9,6 @@
   <li>Website : <%= @user.website %></li>
 </ul>
 
-<%= link_to "Edit Profile", edit_dashboard_user_path(current_user)%>
+<%= button_to "Edit Profile", edit_dashboard_user_path(current_user), class: "btn btn-primary active", :method => :get %>
+<%= button_to "Back to index", jobs_path, class: "btn btn-success active", :method => :get %>
 
