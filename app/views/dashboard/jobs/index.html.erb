@@ -1,11 +1,9 @@
-  <h1 class="text-center"> Your published Jobs </h1>
-
   <div class="container">
     <div class="row">
-      <div class="col-md-6 col-offset-md-3">
-
-        <!-- Affichage pour les Employer -->
+      <!-- Affichage pour les Employer -->
       <% if current_user.user_type == "Employer" %>
+        <h1 class="text-center"> Your published Jobs </h1>
+          <div class="col-md-6 col-offset-md-3">
           <% @jobs.each do |job| %>
           <% if job.start_time > DateTime.now-1 %>
           <div class="container">
@@ -33,7 +31,7 @@
         <!-- Affichage pour les Job Seeker -->
       <% else %>
 
-        <h1> My applications </h1>
+        <h1 class="text-center"> My applications </h1>
         <% @applications.each do |application| %>
             <h2> <%=  application.job.title %></h2> <br>
             <ul>

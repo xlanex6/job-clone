@@ -2,8 +2,8 @@
 
   <% if @job.start_time > DateTime.now-1 %>
 
-    <H1><%= @job.title %></H1>
-    <p><%= @job.content %></p>
+    <H1>Job Title : <%= @job.title %></H1>
+    <p>Description :<%= @job.content %></p>
 
     <ul>
       <li><%= @job.start_time %></li>
@@ -14,15 +14,4 @@
     <%= image_tag "https://maps.googleapis.com/maps/api/staticmap?zoom=12&size=300x200&sensor=false&maptype=roadmap&markers=color:red|#{@job.address}&key=#{ENV['GOOGLE_API_BROWSER_KEY']}" %>
 
     <%= button_to "Back to index", jobs_path, class: "btn btn-success active", :method => :get %>
-    <br>
-    <% if @already_apply %>
-      <br>
-      <%= button_to "Job on ", job_applications_path(@job), class: "btn btn-primary" %>
-    <% else %>
-      <%= button_to "Apply to this job", job_applications_path(@job), class: "btn btn-primary" %>
-    <% end %>
-  <% else %>
-    <h1>The jobs is expired... Sorry :( </h1>
-  <% end %>
-
 </div>
