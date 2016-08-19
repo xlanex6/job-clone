@@ -11,17 +11,11 @@
       <li><%= @job.address %></li>
       <li><%= @job.user.company %></li>
     </ul>
-
-    <%= button_to "Back to index", jobs_path, class: "btn btn-success active", :method => :get %>
-
-    <% if @already_apply %>
-    <br>
-    <p>You already apply</p>
-    <% else %>
-    <%= button_to "Apply to this job", job_applications_path(@job), class: "btn btn-primary active" %>
-    <% end %>
-  <% else %>
-    <h1>The jobs is expired... Sorry :( </h1>
   <% end %>
-
+  <div class="container">
+    <div class="form-inline input-form">
+        <%= button_to "Back to index", jobs_path, class: "form-control btn btn-success active", :method => :get %>
+        <%= button_to "Apply to this job", job_applications_path(@job), class: "form-control btn btn-primary active" %>
+    </div>
+  </div>
 </div>
