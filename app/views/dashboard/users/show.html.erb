@@ -1,14 +1,25 @@
-<H1>Hello <%= @user.first_name %> <%= @user.last_name %> !</H1>
-<h2> Profile Information </h2>
-<ul>
-  <li>User_type : <%= @user.user_type %></li>
-  <li>Title : <%= @user.title %></li>
-  <li>Bio : <%= @user.bio %></li>
-  <li>CV : <%= @user.cv %></li>
-  <li>Company : <%= @user.company %></li>
-  <li>Website : <%= @user.website %></li>
-</ul>
 
-<%= button_to "Edit Profile", edit_dashboard_user_path(current_user), class: "btn btn-primary active", :method => :get %>
-<%= button_to "Back to index", jobs_path, class: "btn btn-success active", :method => :get %>
+  <div class="profil-infos">
+    <div class="jobs-panel">
+      <div style="margin: 30px">
+        <div class="text-center">
+          <H1>Hello <%= @user.first_name %> <%= @user.last_name %> !</H1>
+          <h2> Profile Informations </h2>
+        </div>
+        <div>
+            <ul>
+              <li><strong>User_type :</strong> <%= @user.user_type %></li>
+              <li><strong>Title :</strong> <%= @user.title %></li>
+              <li><strong>Bio :</strong> <%= @user.bio %></li>
+              <li><strong>CV :</strong> <%= @user.cv %></li>
+              <li><strong>Company :</strong> <%= @user.company %></li>
+              <li><strong>Website :</strong> <%= @user.website %></li>
+            </ul>
+        </div>
+        <div class="text-center">
+          <%= button_to "Edit Profile", edit_dashboard_user_path(current_user), class: "btn-controle btn btn-primary active", :method => :get %>
+        </div>
+      </div>
+    </div>
+  </div>
 
