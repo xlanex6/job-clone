@@ -5,15 +5,15 @@
 <div class="wrapper-grey">
   <div class="container">
     <div class="col-8-sm">
-      <div class="jobs">
-        <div class="job-infos jobs-item">
+      <div class="jobs-panel">
+        <div class="job-infos jobs-panel-item">
             <h4><%= job.title %></h4>
             <h5><%= job.user.company %></h5>
         </div>
-        <div class="company-infos jobs-item">
+        <div class="company-infos jobs-panel-item">
             <p><%= job.content %></p>
         </div>
-        <div class="apply-infos jobs-item">
+        <div class="apply-infos jobs-panel-item">
           <div>
               <p><strong>Start:</strong> <%= job.start_time %>
               <p><strong>End:</strong> <%= job.end_time %></p>
@@ -28,23 +28,6 @@
 </div>
   <% end %>
 <% end %>
-
-<div class="container">
-  <div class="row">
-    <% @jobs.each do |job| %>
-      <% if job.start_time > DateTime.now-1 %>
-        <%= link_to job.title, job_path(job)%> <br>
-        <%= job.content %>
-        <ul>
-          <li><%= job.start_time %></li>
-          <li><%= job.end_time %></li>
-          <li><%= job.address %></li>
-          <li>by <%= job.user.company %></li>
-        </ul>
-      <% end %>
-    <% end %>
-  </div>
-</div>
 
 <% content_for(:after_js) do %>
   <%= javascript_tag do %>
@@ -63,5 +46,3 @@
     });
   <% end %>
 <% end %>
-
-
