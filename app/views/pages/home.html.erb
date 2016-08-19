@@ -3,6 +3,7 @@
   <div class="container">
     <div class="text-center">
         <h1>The N°1 Job Marketplace</h1>
+        <h2>Find your dream job in 1 click !</h2>
         <div class="container">
           <div class="form-inline input-form">
             <%= simple_form_for :jobs, url: jobs_path, :method => :get do |f| %>
@@ -14,5 +15,36 @@
           </div>
         </div>
     </div>
+  </div>
+</div>
+  <div class="cards">
+    <div class="row">
+      <div class="col-xs-12 col-md-4">
+        <%= image_tag "maps.png"%>
+        <h2>Find great Jobs</h2>
+        <p>All local jobs in one place</p>
+      </div>
+
+      <div class="col-xs-12 col-md-4">
+        <%= image_tag 'check.png' %>
+        <h2>Apply in 1 click</h2>
+        <p>Contact recruiters easily</p>
+      </div>
+
+      <div class="col-xs-12 col-md-4">
+        <%= image_tag 'case.png' %>
+        <h2>Start a new life</h2>
+        <p>Get the job of you dreams !</p>
+      </div>
+    </div>
+  </div>
+<div class="wrapper-grey">
+  <div class="newsletter">
+    <h2>Get our latest Jobs directly in your emails</h2>
+    </br>
+    <form action="#" class="form-inline">
+    <input type="email" placeholder="john@gmail.com" class="form-control" id="inputlg">
+    <input type="submit" value="Subscribe" class="btn btn-primary">
+    </form>
   </div>
 </div>
