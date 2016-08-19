@@ -15,18 +15,19 @@
 
     <%= button_to "Back to index", jobs_path, class: "btn btn-success active", :method => :get %>
     <br>
-    <% if user_signed_in? %>
-      <% if @already_apply %>
+    <% if current_user == nil %>
+      <p>Signup to apply</p>
+    <% elsif current_user.user_type == "Employer"%>
+          <p>You cannot apply as an Employer :( </p>
+    <% else %>
+      <%if @already_apply %>
         <br>
         <% flash[:alert] = "You already applied to this job" %>
-      <% elsif %>
-        <%= button_to "Apply to this job", job_applications_path(@job), class: "btn btn-primary" %>
       <% else %>
-        <p>This jobs is expired... Sorry :( </p>
+        <%= button_to "Apply to this job", job_applications_path(@job), class: "btn btn-primary" %>
       <% end %>
-    <% else %>
-      <%= button_to "Signup to apply", new_user_registration_path, class: "btn btn-primary" %>
+    <% end %>
   <% end %>
-<% end %>
+
 
 </div>

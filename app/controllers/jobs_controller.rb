@@ -51,11 +51,15 @@ class JobsController < ApplicationController
     @job = Job.find(params[:id])
     @job_geo = { lat: @job.latitude, lng: @job.longitude }
     @already_apply = false
-    @job.applications.each do |j|
       if current_user == nil
         @already_apply = false
       else
-        @already_apply = true
+        @job.applications.each do |j|
+       if current_user.id == j.user_id
+          @already_apply = true
+        else
+          @already_apply = false
+        end
       end
     end
   end
