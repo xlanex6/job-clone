@@ -11,13 +11,13 @@
       <li><%= @job.address %></li>
       <li><%= @job.user.company %></li>
     </ul>
-    <%= image_tag "https://maps.googleapis.com/maps/api/staticmap?zoom=12&size=300x200&sensor=false&maptype=roadmap&markers=color:red|#{@job.address}" %>
+    <%= image_tag "https://maps.googleapis.com/maps/api/staticmap?zoom=12&size=300x200&sensor=false&maptype=roadmap&markers=color:red|#{@job.address}&key=#{ENV['GOOGLE_API_BROWSER_KEY']}" %>
 
     <%= button_to "Back to index", jobs_path, class: "btn btn-success active", :method => :get %>
     <br>
     <% if @already_apply %>
       <br>
-      <p>You already apply</p>
+      <%= button_to "Job on ", job_applications_path(@job), class: "btn btn-primary" %>
     <% else %>
       <%= button_to "Apply to this job", job_applications_path(@job), class: "btn btn-primary" %>
     <% end %>
