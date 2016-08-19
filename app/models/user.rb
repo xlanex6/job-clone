@@ -46,5 +46,4 @@ class User < ApplicationRecord
     jobs_application.flatten
   end
 
-
 end
