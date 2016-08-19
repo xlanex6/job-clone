@@ -1,7 +1,6 @@
 <div id="map" style="width: 100%; height: 400px;"></div>
 <% @jobs.each do |job| %>
 <% if job.start_time > DateTime.now-1 %>
-<div class="wrapper-grey">
   <div class="container">
     <div class="col-8-sm">
       <div class="jobs-panel">
@@ -24,7 +23,6 @@
       </div>
       </div>
     </div>
-</div>
   <% end %>
 <% end %>
 

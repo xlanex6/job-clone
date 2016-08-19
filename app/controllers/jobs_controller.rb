@@ -52,7 +52,9 @@ class JobsController < ApplicationController
     @job_geo = { lat: @job.latitude, lng: @job.longitude }
     @already_apply = false
     @job.applications.each do |j|
-      if current_user.id == j.user_id
+      if current_user == nil
+        @already_apply = false
+      else
         @already_apply = true
       end
     end
