@@ -1,12 +1,23 @@
+
+
+html {
+    position: relative;
+    min-height: 100%;
+}
+body {
+    margin: 0 0 100px; /* bottom = footer height */
+}
+
 #footer {
-  height: 80px;
+  height: 100px;
   background-color: #1b2a33;
-  background-size: cover;
+  width: 100%;
   display: flex;
   align-items: center;
   bottom: 0;
   left: 0;
-  right: 0
+  right: 0;
+  position: absolute;
 }
 
 #footer p {
