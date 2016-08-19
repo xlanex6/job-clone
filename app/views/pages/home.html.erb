@@ -1,17 +1,15 @@
 
 <div class="banner" style="background-image: linear-gradient(-225deg, rgba(0,101,168,0.6) 0%, rgba(0,36,61,0.6) 50%), url(<%= asset_path 'background.jpg' %>);">
-<div class="container">
+  <div class="container">
     <div class="text-center">
-
         <h1>The N°1 Job Marketplace</h1>
-        <%= link_to t(".top_call_to_action", default: "View all jobs"), jobs_path, class: "  btn btn-primary btn-xl" %>
-
         <div class="container">
           <div class="form-inline input-form">
             <%= simple_form_for :jobs, url: jobs_path, :method => :get do |f| %>
               <%= f.input :skill_id, collection: Skill.all, prompt: "Select your skill", class: "form-control", label: false %>
               <%= f.text_field :address, placeholder: "Ex: Paris", class: "form-control" %>
               <%= f.submit 'Find a job', class: "form-control btn btn-danger" %>
+              <%= link_to t(".top_call_to_action", default: "View all jobs"), jobs_path, class: "btn btn-primary btn-xl" %>
             <% end %>
           </div>
         </div>
