@@ -1,5 +1,34 @@
 <div id="map" style="width: 100%; height: 400px;"></div>
 
+<% @jobs.each do |job| %>
+  <% if job.start_time > DateTime.now-1 %>
+<div class="wrapper-grey">
+  <div class="container">
+    <div class="col-8-sm">
+      <div class="jobs">
+        <div class="job-infos jobs-item">
+            <h4><%= job.title %></h4>
+            <h5><%= job.user.company %></h5>
+        </div>
+        <div class="company-infos jobs-item">
+            <p><%= job.content %></p>
+        </div>
+        <div class="apply-infos jobs-item">
+          <div>
+              <p><strong>Start:</strong> <%= job.start_time %>
+              <p><strong>End:</strong> <%= job.end_time %></p>
+          </div>
+          <div class="apply-button">
+            <%= button_to "Show détails", job_path(job.id), :method => :get, class: "btn btn-primary" %>
+          </div>
+        </div>
+      </div>
+      </div>
+    </div>
+</div>
+  <% end %>
+<% end %>
+
 <div class="container">
   <div class="row">
     <% @jobs.each do |job| %>
