@@ -1,12 +1,12 @@
 #footer {
-  height: 100px;
+  height: 80px;
   background-color: #1b2a33;
   background-size: cover;
   display: flex;
   align-items: center;
+  position: relative;
+  bottom: 0;
 }
-
-
 
 .icon {
     color: white;
