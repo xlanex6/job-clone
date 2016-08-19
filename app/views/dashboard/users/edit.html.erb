@@ -1,35 +1,31 @@
-
-
-
-  <div class="container">
-    <div class="row">
-      <div class="col-md-6 col-offset-md-3">
-
-
-        <h1> Your profile </h1>
-        <div class="wraper"></div>
-        <%= simple_form_for @user ,:url => dashboard_user_path, :method => :patch do |f| %>
-        <%= f.input :user_type, collection: [ "Employer", "Job Seeker"], as: :radio_buttons%>
-        <%= f.input :first_name %>
-        <%= f.input :last_name %>
-        <%= f.input :phone %>
-        <%= f.input :photo %>
-        <%= f.input :photo_cache, as: :hidden %>
-        <%= f.input :skill_id, collection: Skill.all %>
-        <hr>
-        <h2> Job Seekers only </h2>
-        <%= f.input :title %>
-        <%= f.input :bio %>
-        <%= f.input :cv %>
-        <hr>
-        <h2> Employer only</h2>
-        <%= f.input :company %>
-        <%= f.input :website %>
-        <%= f.button :submit, class: 'btn btn-primary'%>
-        <% end %>
-      </div>
-      <br>
-
-      </div>
+<div class="container">
+  <div class="row">
+    <div class="col-md-6 col-offset-md-3">
+      <h1> Your profile </h1>
+              <div class="wraper"></div>
+              <%= simple_form_for @user ,:url => dashboard_user_path, :method => :patch do |f| %>
+              <%= f.input :user_type, collection: [ "Employer", "Job Seeker"], as: :radio_buttons%>
+              <%= f.input :first_name %>
+              <%= f.input :last_name %>
+              <%= f.input :phone %>
+              <%= f.input :photo %>
+              <%= f.input :photo_cache, as: :hidden %>
+              <%= f.input :skill_id, collection: Skill.all %>
+              </div>
+          <div class="row">
+            <div class="col-md-6 col-offset-md-3">
+              <h2> Job Seekers only </h2>
+              <%= f.input :title %>
+              <%= f.input :bio %>
+              <%= f.input :cv %>
+              <hr>
+              <h2> Employers only</h2>
+              <%= f.input :company %>
+              <%= f.input :website %>
+              <%= f.button :submit, class: 'btn btn-primary pull-right'%>
+              <% end %>
+          </div>
+        </div>
     </div>
   </div>
+</div>

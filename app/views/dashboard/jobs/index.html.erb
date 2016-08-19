@@ -1,43 +1,57 @@
-<div class="container">
-  <div class="row">
-    <div class="col-md-6 col-offset-md-3">
+  <h1 class="text-center"> Your published Jobs </h1>
 
-      <!-- Affichage pour les Employer -->
-    <% if current_user.user_type == "Employer" %>
-    <h1> Jobs I Posted </h1>
-    <% @jobs.each do |job| %>
-        <%= link_to job.title, dashboard_job_path(job)%> <br>
-        <%= job.content %>
-        <ul>
-          <li><%= job.start_time%></li>
-          <li><%= job.end_time%></li>
-          <li><%= job.address%></li>
-          <li>by <%= job.user.company%></li>
-        </ul>
-      <% end %>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6 col-offset-md-3">
 
-      <!-- Affichage pour les Job Seeker -->
-    <% else %>
+        <!-- Affichage pour les Employer -->
+      <% if current_user.user_type == "Employer" %>
+          <% @jobs.each do |job| %>
+          <% if job.start_time > DateTime.now-1 %>
+          <div class="container">
+            <div class="col-8-sm">
+              <div class="jobs-panel">
+                <div class="job-infos jobs-panel-item">
+                    <h4><%= job.title %></h4>
+                    <h5><%= job.user.company %></h5>
+                </div>
+                <div class="company-infos jobs-panel-item">
+                    <p><%= job.content %></p>
+                </div>
+                <div class="apply-infos jobs-panel-item">
 
-      <h1> My applications </h1>
-      <% @applications.each do |application| %>
-          <h2> <%=  application.job.title %></h2> <br>
-          <ul>
-            <li><%= application.job.start_time %></li>
-            <li><%= application.job.end_time %></li>
-            <li><%= application.job.address %></li>
-            <li>by <%= application.job.user.company %></li>
-            <li><%= application.job.address %></li>
-            <% if application.accepted_date == nil && application.refused_date == nil %>
-              <p>Pending validation</p>
-              <% elsif application.accepted_date != nil %>
-                <p>Application accepted on <%= application.accepted_date %></p>
-              <% else %>
-                <p>Application refused on <%= application.refused_date %></p>
-            <% end %>
-          </ul>
-      <% end %>
+                  <div class="apply-button">
+                    <%= button_to "View applications", job_path(job.id), :method => :get, class: "btn btn-primary" %>
+                  </div>
+                </div>
+              </div>
+              </div>
+            </div>
     <% end %>
+  <% end %>
+
+        <!-- Affichage pour les Job Seeker -->
+      <% else %>
+
+        <h1> My applications </h1>
+        <% @applications.each do |application| %>
+            <h2> <%=  application.job.title %></h2> <br>
+            <ul>
+              <li><%= application.job.start_time %></li>
+              <li><%= application.job.end_time %></li>
+              <li><%= application.job.address %></li>
+              <li>by <%= application.job.user.company %></li>
+              <li><%= application.job.address %></li>
+              <% if application.accepted_date == nil && application.refused_date == nil %>
+                <p>Pending validation</p>
+                <% elsif application.accepted_date != nil %>
+                  <p>Application accepted on <%= application.accepted_date %></p>
+                <% else %>
+                  <p>Application refused on <%= application.refused_date %></p>
+              <% end %>
+            </ul>
+        <% end %>
+      <% end %>
+      </div>
     </div>
   </div>
-</div>

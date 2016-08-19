@@ -9,10 +9,10 @@
   background-color: #f9f9f9;
   color: #6e7070;
   .company-infos, .job-infos, .apply-infos{
-    margin: 5px;
     text-align: center;
     height: 100%;
     width: 33%;
+    padding: 8px;
   }
 
   .company-infos{
@@ -20,7 +20,6 @@
     border-right: 1px solid #a19b98;
     padding-left: 10px;
     padding-right: 10px;
-
   }
 
   .jobs-panel-item ul {
@@ -31,15 +30,9 @@
     font-style: Spen Sans;
     color: black;
     font-size: 16px;
-    margin: 0;
-    margin-top: 5px;
   }
 
   .jobs-panel h4, h5 {
     margin-top: 5px;
-  }
-
-  .apply-button {
-    margin-top: 10px;
   }
 }
