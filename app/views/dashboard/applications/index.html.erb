@@ -1,53 +1,49 @@
-
-
-<ul>
-</ul>
+<ul></ul>
 
 <div class="wrapper-grey">
     <div class="container">
         <div class="col-8-sm">
-          <div class="text-center">
-            <h1>Pending Application</h1>
-          </div>
+            <div class="text-center">
+              <h1>Pending Application</h1>
+            </div>
+            <% @applications.each do |application| %>
             <div class="jobs-panel">
                 <div class="jobs-panel-item text-center">
-                  <% @applications.each do |application| %>
-                      <p>For the job</p>
-                      <h3><%= application.job.title %></h3>
-                      <p>at</p>
-                      <p><%= application.job.address %></p>
-                    </div>
-                      <div class="jobs-panel-item text-center">
+                    <p>For the job</p>
+                    <h3><%= application.job.title %></h3>
+                    <p>at</p>
+                    <p><%= application.job.address %></p>
+                </div>
+                <div class="jobs-panel-item text-center">
 
-                      <h3>
-                        <%= application.user.first_name %> <%= application.user.last_name %>
-                      </h3>
-                      <p>is waiting your applixation</p>
-                      </div>
+                    <h3>
+                        <%= application.user.first_name %>
+                        <%= application.user.last_name %>
+                    </h3>
+                    <p>is waiting your applixation</p>
+                </div>
 
+                <div class="jobs-panel-item text-center">
 
+                    <%= link_to "Accepted", dashboard_application_path(application, status: 'accepted'), method: :patch, class: "btn btn-success" %>
+                    <%= link_to "Refused", dashboard_application_path(application, status: 'refused'), method: :patch, class: "btn btn-danger" %>
 
-                      <div class="jobs-panel-item text-center">
+                    <br>
+                    <br>
+                    <% if application.accepted_date == nil && application.refused_date == nil %>
 
-                      <%= link_to "Accepted", dashboard_application_path(application, status: 'accepted'), method: :patch, class: "btn btn-success" %>
-                      <%= link_to "Refused", dashboard_application_path(application, status: 'refused'), method: :patch, class: "btn btn-danger" %>
-
-                      <br>
-                      <br>
-                      <% if application.accepted_date == nil && application.refused_date == nil %>
-
-
-                      <h3>Pending validation</h3>
-                      <% elsif application.accepted_date != nil %>
-                      <span>Application accepted on <br><%= application.accepted_date %></span>
-                      <% else %>
-                      <span>Application refused on <br><%= application.refused_date %></span>
-                      <% end %>
-                    </div>
-                  <% end %>
-
+                    <h3>Pending validation</h3>
+                    <% elsif application.accepted_date != nil %>
+                    <span>Application accepted on
+                        <br><%= application.accepted_date %></span>
+                <% else %>
+                    <span>Application refused on
+                        <br><%= application.refused_date %></span>
+                    <% end %>
+                </div>
 
             </div>
+            <% end %>
         </div>
     </div>
 </div>
