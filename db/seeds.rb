@@ -11,13 +11,14 @@ puts " All user / skill / job / application DESTROY "
 
 ##########Dashboard############
 
-employers = 20
+employers = 50
 jobseekers = 100
-job = 500
+fake_job = 500
 
 ###############################
 
 puts "Create Skills"
+
 Skill.create(name:"Employer")
 Skill.create(name:"Designer")
 Skill.create(name:"Web Designer")
@@ -64,23 +65,6 @@ jobseekers.times do
 end
 puts "#{jobseekers} Jobs seekers created"
 
-#Jobs
-puts "Create Jobs...."
-job.times do
-  nbre = rand(1..93)
-  city_data = Faker::Address.fr_zip_and_city_in_region(nbre)
-  skill = Skill.all.sample
-  Job.create(
-    content: Faker::StarWars.quote,
-    start_time: Faker::Date.forward(5),
-    end_time: Faker::Date.forward(45) + 5,
-    address: "#{Faker::Address.fr_street_name} #{city_data[1]} #{city_data[0]}",
-    skill_id: skill.id,
-    user_id: rand(1..20),
-    title: skill.name + [" chief"," director", " junior", " senior"].sample,
-  )
-end
-puts "#{job} jobs created"
 
 # add Perso users
 puts "Add alex user as Employer"
@@ -94,6 +78,7 @@ User.create(
   company: Faker::Company.fr_name,
   user_type: "Employer"
 )
+
 puts "Add cyril user as Employer"
 User.create(
   first_name: "Cyril",
@@ -105,6 +90,7 @@ User.create(
   company: Faker::Company.fr_name,
   user_type: "Employer"
 )
+
 puts "Add Vincent user as Employer"
 User.create(
   first_name: "Vincent",
@@ -116,5 +102,22 @@ User.create(
   company: Faker::Company.fr_name,
   user_type: "Employer"
 )
+#Jobs
+puts "Create Jobs...."
+fake_job.times do
+  nbre = rand(1..93)
+  city_data = Faker::Address.fr_zip_and_city_in_region(nbre)
+  skill = Skill.all.sample
+  Job.create(
+  content: Faker::StarWars.quote,
+  start_time: Faker::Date.forward(5),
+  end_time: Faker::Date.forward(45) + 5,
+  address: "#{Faker::Address.fr_street_name} #{city_data[1]} #{city_data[0]}",
+  skill_id: skill.id,
+  user_id: rand(1..20),
+  title: skill.name + [" chief"," director", " junior", " senior"].sample,
+  )
+end
+puts "#{fake_job} jobs created"
 
 puts "Seed succedd - Enjoy ;) "
