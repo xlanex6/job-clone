@@ -17,7 +17,7 @@ class Dashboard::JobsController < ApplicationController
     @job = Job.new(job_params)
     @job.user_id = current_user.id
     if @job.save
-      redirect_to dashboard_jobs_path
+      redirect_to dashboard_jobs_path, notice: "Your job has been successfully posted !"
     else
       render :new
     end
