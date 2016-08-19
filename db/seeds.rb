@@ -13,7 +13,7 @@ puts " All user / skill / job / application DESTROY "
 
 employers = 20
 jobseekers = 100
-job = 150
+job = 500
 
 ###############################
 
