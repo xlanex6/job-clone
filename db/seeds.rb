@@ -11,9 +11,9 @@ puts " All user / skill / job / application DESTROY "
 
 ##########Dashboard############
 
-employers = 50
-jobseekers = 100
-fake_job = 500
+employers = 15
+jobseekers = 90
+fake_job = 200
 
 ###############################
 
@@ -79,29 +79,29 @@ User.create(
   user_type: "Employer"
 )
 
-puts "Add cyril user as Employer"
-User.create(
-  first_name: "Cyril",
-  last_name: "Fougeres",
-  email: "cyril@gmail.com",
-  password: "123soleil",
-  phone: Faker::PhoneNumber.fr_cellphone_number,
-  website: Faker::Internet.domain_name,
-  company: Faker::Company.fr_name,
-  user_type: "Employer"
-)
-
-puts "Add Vincent user as Employer"
-User.create(
-  first_name: "Vincent",
-  last_name: "Hamonic",
-  email: "vincent@gmail.com",
-  password: "123soleil",
-  phone: Faker::PhoneNumber.fr_cellphone_number,
-  website: Faker::Internet.domain_name,
-  company: Faker::Company.fr_name,
-  user_type: "Employer"
-)
+# puts "Add cyril user as Employer"
+# User.create(
+#   first_name: "Cyril",
+#   last_name: "Fougeres",
+#   email: "cyril@gmail.com",
+#   password: "123soleil",
+#   phone: Faker::PhoneNumber.fr_cellphone_number,
+#   website: Faker::Internet.domain_name,
+#   company: Faker::Company.fr_name,
+#   user_type: "Employer"
+# )
+#
+# puts "Add Vincent user as Employer"
+# User.create(
+#   first_name: "Vincent",
+#   last_name: "Hamonic",
+#   email: "vincent@gmail.com",
+#   password: "123soleil",
+#   phone: Faker::PhoneNumber.fr_cellphone_number,
+#   website: Faker::Internet.domain_name,
+#   company: Faker::Company.fr_name,
+#   user_type: "Employer"
+# )
 #Jobs
 puts "Create Jobs...."
 fake_job.times do
