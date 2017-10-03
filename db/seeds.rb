@@ -11,8 +11,8 @@ puts " All user / skill / job / application DESTROY "
 
 ##########Dashboard############
 
-employers = 15
-jobseekers = 90
+employers = 10
+jobseekers = 50
 fake_job = 200
 
 ###############################
@@ -104,20 +104,23 @@ User.create(
 # )
 #Jobs
 puts "Create Jobs...."
+counter = 0
 fake_job.times do
   nbre = rand(1..93)
   city_data = Faker::Address.fr_zip_and_city_in_region(nbre)
   skill = Skill.all.sample
   Job.create(
-  content: Faker::StarWars.quote,
-  start_time: Faker::Date.forward(5),
-  end_time: Faker::Date.forward(45) + 5,
-  address: "#{Faker::Address.fr_street_name} #{city_data[1]} #{city_data[0]}",
-  skill_id: skill.id,
-  user_id: rand(1..20),
-  title: skill.name + [" chief"," director", " junior", " senior"].sample,
+    content: Faker::StarWars.quote,
+    start_time: Faker::Date.forward(60),
+    end_time: Faker::Date.forward(123) + 5,
+    address: "#{Faker::Address.fr_street_name} #{city_data[1]} #{city_data[0]}",
+    skill_id: skill.id,
+    user_id: User.all.sample.id,
+    title: skill.name + [" chief"," director", " junior", " senior"].sample,
   )
+    counter += 1
+    p "#{counter} job created"
 end
-puts "#{fake_job} jobs created"
+puts "#{Job.count} jobs created"
 
 puts "Seed succedd - Enjoy ;) "
